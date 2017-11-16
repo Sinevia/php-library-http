@@ -15,6 +15,6 @@
         }
     ],
     "autoload": {
-        "files": ["src/HttpClient.php""]
+        "files": ["src/HttpClient.php"]
     }
 }
