@@ -1,5 +1,5 @@
 # PHP Library HTTP
-Utility classes for API
+HTTP client
 
 ## Background ##
 
