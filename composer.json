@@ -1,7 +1,6 @@
 {
     "name": "sinevia/php-library-http",
     "description": "PHP Library HTTP",
-    "version": "0.0.1",
     "type": "library",
     "keywords": ["http", "library", "php", "sinevia"],    
     "homepage": "http://github.com/sinevia/php-library-http",
