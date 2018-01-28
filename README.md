@@ -5,18 +5,18 @@ HTTP client
 
 ## Installation ##
 
-Add the following to your composer file:
+Install via Composer
+
+```
+composer require sinevia/php-library-http
+```
+
+Or add the following to your composer file:
 
 ```json
-   "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/sinevia/php-library-http.git"
-        }
-    ],
-    "require": {
-        "sinevia/php-library-http": "dev-master"
-    },
+   "require": {
+      "sinevia/php-library-http": "1.0.0"
+   },
 ```
 
 ## Usage ##
@@ -24,4 +24,11 @@ Add the following to your composer file:
 The lines bellow create an HTTP Client:
 
 ```php
+$http = new \Sinevia\HttpClent("http://localhost/");
+
+$http->setPath('/yourpath/');
+
+$http->post(array('user'=>'UN','pass'=>'PW'); // Data to be sent as array
+
+echo $http->getResponseBody();
 ```
