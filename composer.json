@@ -4,7 +4,7 @@
     "type": "library",
     "keywords": ["http", "library", "php", "sinevia"],    
     "homepage": "http://github.com/sinevia/php-library-http",
-    "license": "commercial",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Milan Lesichkov",
