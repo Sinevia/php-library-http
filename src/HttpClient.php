@@ -3,7 +3,7 @@
 // ========================================================================= //
 // SINEVIA CONFIDENTIAL                                  http://sinevia.com  //
 // ------------------------------------------------------------------------- //
-// COPYRIGHT (c) 2008-2015 Sinevia Ltd                   All rights reserved //
+// COPYRIGHT (c) 2008-2018 Sinevia Ltd                   All rights reserved //
 // ------------------------------------------------------------------------- //
 // LICENCE: All information contained herein is, and remains, property of    //
 // Sinevia Ltd at all times.  Any intellectual and technical concepts        //
@@ -80,11 +80,12 @@ class HttpClient {
         }
         // END: Prepare the COOKIE string
         // START: Prepare header
-        if ($get != '')
+        if ($get != '') {
             $path .= '?' . $get;
+        }
         $header = "GET " . $path . " HTTP/1.0\r\n";
         $header .= "Host: " . $host . "\r\n";
-        $header.= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1) Gecko/20061010 Firefox/2.0\r\n";
+        $header .= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1) Gecko/20061010 Firefox/2.0\r\n";
         if ($this->getUser() != '') {
             $header .= 'Authorization: Basic ' . base64_encode($this->getUser() . ':' . $this->getPassword()) . "\r\n";
         }
@@ -207,7 +208,7 @@ class HttpClient {
         }
         $header = "POST " . $path . " HTTP/1.0\r\n";
         $header .= "Host: " . $this->data['host'] . "\r\n";
-        $header.= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1) Gecko/20061010 Firefox/2.0\r\n";
+        $header .= "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1) Gecko/20061010 Firefox/2.0\r\n";
         if ($this->data['user'] != '') {
             $header .= 'Authorization: Basic ' . base64_encode($this->data['user'] . ':' . $this->data['pass']) . "\r\n";
         }
@@ -220,6 +221,9 @@ class HttpClient {
         $header .= $post . "\r\n\r\n";
         // END: Prepare header
         // START: Send request
+        if ($this->getScheme() == "https") {
+            $host = 'ssl://' . $host;
+        }
         $fp = fsockopen($host, $port, $err_num, $err_str, 30);
         if ($fp === false) {
             echo "No Connection";
@@ -442,6 +446,8 @@ class HttpClient {
         }
         if (isset($url['port'])) {
             $this->setPort($url['port']);
+        } else if ($this->getScheme() == 'https') {
+            $this->setPort('443');
         }
         if (isset($url['pass'])) {
             $this->setPassword($url['pass']);
@@ -470,3 +476,5 @@ class HttpClient {
 //===========================================================================//
 // CLASS: Http                                                               //
 //============================== END OF CLASS ===============================//
+
+    
