@@ -15,7 +15,7 @@ Or add the following to your composer file:
 
 ```json
    "require": {
-      "sinevia/php-library-http": "1.0.2"
+      "sinevia/php-library-http": "1.3.0"
    },
 ```
 
