@@ -19,7 +19,7 @@ namespace Sinevia;
  * Implements a basic HTTP client with cookie support.
  * <code>
  * $http = new Http("http://localhost/");
- * $http->setPath('/2012__kuikee__4.0/');
+ * $http->setPath('/myproject/');
  * $http->post(array('user'=>'UN','pass'=>'PW');
  * echo $http->getResponseBody();
  * </code>
@@ -471,10 +471,4 @@ class HttpClient {
         return $this;
     }
 
-}
-
-//===========================================================================//
-// CLASS: Http                                                               //
-//============================== END OF CLASS ===============================//
-
-    
+}    
